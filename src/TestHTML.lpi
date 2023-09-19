@@ -15,9 +15,10 @@
         <DpiAware Value="True"/>
       </XPManifest>
       <Icon Value="0"/>
-      <Resources Count="2">
+      <Resources Count="3">
         <Resource_0 FileName="html/simplepage.html" Type="HTML" ResourceName="SIMPLEPAGE"/>
         <Resource_1 FileName="html/pagewithinlinecss.html" Type="HTML" ResourceName="PAGEWITHINLINECSS"/>
+        <Resource_2 FileName="html/simplepagewithanchor.html" Type="HTML" ResourceName="SIMPLEPAGEWITHANCHOR"/>
       </Resources>
     </General>
     <BuildModes Count="3">

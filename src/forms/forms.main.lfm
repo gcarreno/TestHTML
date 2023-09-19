@@ -18,6 +18,8 @@ object frmMain: TfrmMain
     Width = 800
     ActivePage = tsHTMLViewer
     Align = alClient
+    MultiLine = True
+    Options = [nboMultiLine]
     TabIndex = 0
     TabOrder = 0
     object tsHTMLViewer: TTabSheet
@@ -26,46 +28,120 @@ object frmMain: TfrmMain
       ClientWidth = 790
       object panHTMLViewerButtons: TPanel
         Left = 0
-        Height = 41
+        Height = 177
         Top = 0
         Width = 790
         Align = alTop
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 41
+        ClientHeight = 177
         ClientWidth = 790
         TabOrder = 1
-        object btnSimplePage: TButton
-          Left = 4
-          Height = 33
-          Top = 4
-          Width = 172
-          Action = actHTMLViewerSimplePage
-          Align = alLeft
+        object gbResource: TGroupBox
+          Left = 0
+          Height = 59
+          Top = 0
+          Width = 790
+          Align = alTop
           AutoSize = True
-          BorderSpacing.Left = 4
-          BorderSpacing.Top = 4
-          BorderSpacing.Bottom = 4
+          Caption = ' Resource '
+          ClientHeight = 41
+          ClientWidth = 788
           TabOrder = 0
+          object btnSimplePageRes: TButton
+            Left = 4
+            Height = 33
+            Top = 4
+            Width = 98
+            Action = actHTMLViewerSimplePageRes
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Left = 4
+            BorderSpacing.Top = 4
+            BorderSpacing.Bottom = 4
+            TabOrder = 0
+          end
+          object btnHTMLViewerPageWithInlineCSSRes: TButton
+            Left = 106
+            Height = 33
+            Top = 4
+            Width = 151
+            Action = actHTMLViewerPageWithInlineCSSRes
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Left = 4
+            BorderSpacing.Top = 4
+            BorderSpacing.Bottom = 4
+            TabOrder = 1
+          end
         end
-        object btnHTMLViewerPageWithInlineCSS: TButton
-          Left = 180
-          Height = 33
-          Top = 4
-          Width = 151
-          Action = actHTMLViewerPageWithInlineCSS
-          Align = alLeft
+        object gbFile: TGroupBox
+          Left = 0
+          Height = 59
+          Top = 59
+          Width = 790
+          Align = alTop
           AutoSize = True
-          BorderSpacing.Left = 4
-          BorderSpacing.Top = 4
-          BorderSpacing.Bottom = 4
+          Caption = ' File '
+          ClientHeight = 41
+          ClientWidth = 788
           TabOrder = 1
+          object btnSimplePageFile: TButton
+            Left = 4
+            Height = 33
+            Top = 4
+            Width = 98
+            Action = actHTMLViewerSimplePageFile
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Left = 4
+            BorderSpacing.Top = 4
+            BorderSpacing.Bottom = 4
+            TabOrder = 0
+          end
+          object btnHTMLViewerPageWithInlineCSSFile: TButton
+            Left = 106
+            Height = 33
+            Top = 4
+            Width = 151
+            Action = actHTMLViewerPageWithInlineCSSFile
+            Align = alLeft
+            AutoSize = True
+            BorderSpacing.Left = 4
+            BorderSpacing.Top = 4
+            BorderSpacing.Bottom = 4
+            TabOrder = 1
+          end
+        end
+        object gbEvents: TGroupBox
+          Left = 0
+          Height = 59
+          Top = 118
+          Width = 790
+          Align = alTop
+          AutoSize = True
+          Caption = ' Events '
+          ClientHeight = 41
+          ClientWidth = 788
+          TabOrder = 2
+          object btnHTMLViewerOnHotSpotClick: TButton
+            Left = 4
+            Height = 33
+            Top = 4
+            Width = 123
+            Action = actHTMLViewerOnHotSpotClick
+            AutoSize = True
+            BorderSpacing.Left = 4
+            BorderSpacing.Top = 4
+            BorderSpacing.Bottom = 4
+            TabOrder = 0
+          end
         end
       end
       object hvHtmlViewer: THtmlViewer
         Left = 0
-        Height = 428
-        Top = 41
+        Height = 292
+        Top = 177
         Width = 790
         BorderStyle = htFocused
         HistoryMaxCount = 0
@@ -99,15 +175,30 @@ object frmMain: TfrmMain
       Caption = 'E&xit'
       Hint = 'Exit'
     end
-    object actHTMLViewerSimplePage: TAction
+    object actHTMLViewerSimplePageRes: TAction
       Category = 'HTMLViewer'
-      Caption = '&Simple Page (Resource)'
-      OnExecute = actHTMLViewerSimplePageExecute
+      Caption = '&Simple Page'
+      OnExecute = actHTMLViewerSimplePageResExecute
     end
-    object actHTMLViewerPageWithInlineCSS: TAction
+    object actHTMLViewerPageWithInlineCSSRes: TAction
       Category = 'HTMLViewer'
-      Caption = 'Page With Inline CSS (Resource)'
-      OnExecute = actHTMLViewerPageWithInlineCSSExecute
+      Caption = '&Page With Inline CSS'
+      OnExecute = actHTMLViewerPageWithInlineCSSResExecute
+    end
+    object actHTMLViewerSimplePageFile: TAction
+      Category = 'HTMLViewer'
+      Caption = 'S&imple Page'
+      OnExecute = actHTMLViewerSimplePageFileExecute
+    end
+    object actHTMLViewerPageWithInlineCSSFile: TAction
+      Category = 'HTMLViewer'
+      Caption = 'P&age With Inline CSS'
+      OnExecute = actHTMLViewerPageWithInlineCSSFileExecute
+    end
+    object actHTMLViewerOnHotSpotClick: TAction
+      Category = 'HTMLViewer'
+      Caption = 'OnHotSpotClick'
+      OnExecute = actHTMLViewerOnHotSpotClickExecute
     end
   end
 end
