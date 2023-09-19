@@ -1,6 +1,6 @@
 unit Forms.Main;
 
-{$mode objfpc}{.$H+}
+{$mode objfpc}{$H+}
 
 interface
 
@@ -44,8 +44,12 @@ type
     mnuFile: TMenuItem;
     mnuFileExit: TMenuItem;
     mmMain: TMainMenu;
+    panFrameViewerButtons: TPanel;
+    panFrameBrowserButtons: TPanel;
     panHTMLViewerButtons: TPanel;
     pcMain: TPageControl;
+    tsTFrameBrowser: TTabSheet;
+    tsTFrameViewer: TTabSheet;
     tsHTMLViewer: TTabSheet;
     procedure actHTMLViewerOnHotSpotClickExecute(Sender: TObject);
     procedure actHTMLViewerPageWithInlineCSSFileExecute(Sender: TObject);
@@ -55,6 +59,8 @@ type
     procedure actHTMLViewerSimplePageResExecute(Sender: TObject);
   private
     procedure InitShortCuts;
+    procedure HTMLLoadFromResource(AResource: UnicodeString);
+    procedure HTMLLoadFromFile(AResource: UnicodeString);
     procedure OnHotSpotClick(Sender: TObject; const URL: UnicodeString;
       var Handled: Boolean);
   public
@@ -76,6 +82,7 @@ const
   cHTMLPath: UnicodeString = '../src/html/%s';
   cSimplePage: UnicodeString = 'simplepage.html';
   cPageWithInlineCSS: UnicodeString = 'pagewithinlinecss.html';
+  crInfoPage = 'INFOPAGE';
   crSimplePage = 'SIMPLEPAGE';
   crPageWithInlineCSS = 'PAGEWITHINLINECSS';
   crSimplePageWithAnchor = 'SIMPLEPAGEWITHANCHOR';
@@ -89,6 +96,8 @@ begin
   Caption:= 'Test HTML v0.1.0';
   InitShortCuts;
   hvHtmlViewer.OnHotSpotClick:= @OnHotSpotClick;
+  HTMLLoadFromResource(crInfoPage);
+  pcMain.ActivePageIndex:= 0;
 end;
 
 procedure TfrmMain.InitShortCuts;
@@ -101,6 +110,25 @@ begin
 {$ENDIF}
 end;
 
+procedure TfrmMain.HTMLLoadFromResource(AResource: UnicodeString);
+var
+  resourceStream: TResourceStream;
+begin
+  // Using a resource stream because the LoadFromresource of the component
+  // fails to get the resource.
+  resourceStream:= TResourceStream.Create(HINSTANCE, AnsiString(AResource), RT_HTML);
+  try
+    hvHtmlViewer.LoadFromStream(resourceStream);
+  finally
+    resourceStream.Free;
+  end;
+end;
+
+procedure TfrmMain.HTMLLoadFromFile(AResource: UnicodeString);
+begin
+  hvHtmlViewer.LoadFromFile(UnicodeFormat(cHTMLPath, [AResource]));
+end;
+
 procedure TfrmMain.OnHotSpotClick(Sender: TObject; const URL: UnicodeString;
   var Handled: Boolean);
 begin
@@ -109,55 +137,28 @@ begin
 end;
 
 procedure TfrmMain.actHTMLViewerSimplePageResExecute(Sender: TObject);
-var
-  resourceStream: TResourceStream;
 begin
-  // Using a resource stream because the LoadFromresource of the component
-  // fails to get the resource.
-  resourceStream:= TResourceStream.Create(HINSTANCE, crSimplePage, RT_HTML);
-  try
-    hvHtmlViewer.LoadFromStream(resourceStream);
-  finally
-    resourceStream.Free;
-  end;
+  HTMLLoadFromResource(crSimplePage);
 end;
 
 procedure TfrmMain.actHTMLViewerPageWithInlineCSSResExecute(Sender: TObject);
-var
-  resourceStream: TResourceStream;
 begin
-  // Using a resource stream because the LoadFromresource of the component
-  // fails to get the resource.
-  resourceStream:= TResourceStream.Create(HINSTANCE, crPageWithInlineCSS, RT_HTML);
-  try
-    hvHtmlViewer.LoadFromStream(resourceStream);
-  finally
-    resourceStream.Free;
-  end;
+  HTMLLoadFromResource(crPageWithInlineCSS);
 end;
 
 procedure TfrmMain.actHTMLViewerSimplePageFileExecute(Sender: TObject);
 begin
-  hvHtmlViewer.LoadFromFile(UnicodeFormat(cHTMLPath, [cSimplePage]));
+  HTMLLoadFromFile(cSimplePage);
 end;
 
 procedure TfrmMain.actHTMLViewerPageWithInlineCSSFileExecute(Sender: TObject);
 begin
-  hvHtmlViewer.LoadFromFile(UnicodeFormat(cHTMLPath, [cPageWithInlineCSS]));
+  HTMLLoadFromFile(cPageWithInlineCSS);
 end;
 
 procedure TfrmMain.actHTMLViewerOnHotSpotClickExecute(Sender: TObject);
-var
-  resourceStream: TResourceStream;
 begin
-  // Using a resource stream because the LoadFromresource of the component
-  // fails to get the resource.
-  resourceStream:= TResourceStream.Create(HINSTANCE, crSimplePageWithAnchor, RT_HTML);
-  try
-    hvHtmlViewer.LoadFromStream(resourceStream);
-  finally
-    resourceStream.Free;
-  end;
+  HTMLLoadFromResource(crSimplePageWithAnchor);
 end;
 
 end.
