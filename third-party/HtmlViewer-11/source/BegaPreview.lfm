@@ -1,0 +1,566 @@
+object BegaCustomPreviewFrame: TBegaCustomPreviewFrame
+  Left = 0
+  Height = 550
+  Top = 0
+  Width = 590
+  ClientHeight = 550
+  ClientWidth = 590
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  ParentFont = False
+  ParentShowHint = False
+  ShowHint = True
+  TabOrder = 0
+  DesignLeft = 344
+  DesignTop = 60
+  object StatBarPanel: TPanel
+    Left = 0
+    Height = 17
+    Top = 533
+    Width = 590
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 17
+    ClientWidth = 590
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    ParentFont = False
+    TabOrder = 1
+    object CurrentPageLabel: TPanel
+      Left = 0
+      Height = 17
+      Hint = 'Displays the number of the first visible page'
+      Top = 0
+      Width = 121
+      Align = alLeft
+      BevelOuter = bvLowered
+      Caption = 'Current page'
+      TabOrder = 0
+    end
+    object PreviewZoomLabel: TPanel
+      Left = 242
+      Height = 17
+      Hint = 'Displays the current preview zoom level (100% = normal)'
+      Top = 0
+      Width = 121
+      Align = alLeft
+      BevelOuter = bvLowered
+      Caption = 'Preview zoom'
+      TabOrder = 1
+    end
+    object Panel1: TPanel
+      Left = 363
+      Height = 17
+      Hint = 'Displays Help for the object beneath the mouse'
+      Top = 0
+      Width = 227
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 17
+      ClientWidth = 227
+      TabOrder = 2
+      object HintLabel: TLabel
+        Left = 8
+        Height = 1
+        Hint = 'Displays Help for the object beneath the mouse'
+        Top = 5
+        Width = 1
+      end
+    end
+    object ContentZoomLabel: TPanel
+      Left = 121
+      Height = 17
+      Hint = 'Displays the current content zoom level (100% = normal)'
+      Top = 0
+      Width = 121
+      Align = alLeft
+      BevelOuter = bvLowered
+      Caption = 'Content zoom'
+      TabOrder = 3
+    end
+  end
+  object ToolBar: TToolBar
+    Left = 0
+    Height = 44
+    Top = 0
+    Width = 590
+    AutoSize = True
+    BorderWidth = 1
+    Caption = 'ToolBar'
+    EdgeInner = esNone
+    EdgeOuter = esNone
+    Images = imgList
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    object ReportProperties: TToolButton
+      Left = 1
+      Top = 0
+      Caption = 'ReportProperties'
+      ImageIndex = 8
+      OnClick = ReportPropertiesClick
+    end
+    object PrinterSetup: TToolButton
+      Left = 32
+      Hint = 'Setup printer...'
+      Top = 0
+      Caption = 'PrinterSetup'
+      ImageIndex = 0
+      OnClick = PrinterSetupClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object Print: TToolButton
+      Left = 55
+      Hint = 'Print shown document...'
+      Top = 0
+      Caption = 'Print'
+      ImageIndex = 1
+      OnClick = PrintClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object SendMail: TToolButton
+      Left = 78
+      Hint = 'Send e-mail with shown document...'
+      Top = 0
+      Caption = 'SendMail'
+      ImageIndex = 10
+      OnClick = SendMailClick
+      Visible = False
+    end
+    object SaveFile: TToolButton
+      Left = 101
+      Hint = 'Save shown document as HTML file...'
+      Top = 0
+      Caption = 'SaveFile'
+      ImageIndex = 2
+      OnClick = SaveFileClick
+      ParentShowHint = False
+      ShowHint = True
+      Visible = False
+    end
+    object OpenInExcel: TToolButton
+      Left = 124
+      Hint = 'Open shown document in ''MS Excel'''
+      Top = 0
+      Caption = 'OpenInExcel'
+      ImageIndex = 18
+      OnClick = OpenInExcelClick
+    end
+    object ContentZoomSeparator: TToolButton
+      Left = 147
+      Height = 22
+      Top = 0
+      Caption = 'ContentZoomSeparator'
+      ImageIndex = 4
+      Style = tbsSeparator
+    end
+    object ContentZoomBoxLabel: TLabel
+      Left = 155
+      Height = 22
+      Top = 0
+      Width = 39
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Content'#13#10'zoom'
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Layout = tlCenter
+      ParentFont = False
+    end
+    object ContentZoomBox: TComboBox
+      Left = 194
+      Height = 21
+      Hint = 'Content zoom'
+      Top = 0
+      Width = 81
+      ItemHeight = 13
+      Items.Strings = (
+        'Fit to page'
+        'Fit to height'
+        'Fit to width'
+        '25%'
+        '50%'
+        '75%'
+        '100%'
+        '125%'
+        '150%'
+        '200%'
+        '300%'
+        '400%'
+        '800%'
+      )
+      OnChange = ContentZoomBoxChange
+      Style = csDropDownList
+      TabOrder = 4
+    end
+    object ContentFitHeight: TToolButton
+      Left = 275
+      Hint = 'Fit content to page height'
+      Top = 0
+      AllowAllUp = True
+      Caption = 'ContentFitHeight'
+      Grouped = True
+      ImageIndex = 11
+      OnClick = ContentFitHeightClick
+      Style = tbsCheck
+    end
+    object ContentFitWidth: TToolButton
+      Left = 298
+      Hint = 'Fit content to page width'
+      Top = 0
+      AllowAllUp = True
+      Caption = 'Send'
+      Grouped = True
+      ImageIndex = 12
+      OnClick = ContentFitWidthClick
+      ParentShowHint = False
+      ShowHint = True
+      Style = tbsCheck
+    end
+    object ToolButton2: TToolButton
+      Left = 321
+      Height = 22
+      Top = 0
+      Caption = 'ToolButton2'
+      ImageIndex = 5
+      Style = tbsSeparator
+    end
+    object FirstPage: TToolButton
+      Left = 329
+      Hint = 'Go to first page of document'
+      Top = 0
+      Caption = 'FirstPage'
+      ImageIndex = 3
+      OnClick = FirstPageClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object PrevPage: TToolButton
+      Left = 352
+      Hint = 'Go to previous page of document'
+      Top = 0
+      AllowAllUp = True
+      Caption = 'PrevPage'
+      Grouped = True
+      ImageIndex = 4
+      OnClick = PrevPageClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object cboxPage: TComboBox
+      Left = 375
+      Height = 21
+      Hint = 'List of all pages of this report'
+      Top = 0
+      Width = 145
+      ItemHeight = 13
+      OnChange = PageChange
+      Style = csDropDownList
+      TabOrder = 5
+    end
+    object NextPage: TToolButton
+      Left = 520
+      Hint = 'Go to next page of document'
+      Top = 0
+      Caption = 'NextPage'
+      ImageIndex = 5
+      OnClick = NextPageClick
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object LastPage: TToolButton
+      Left = 543
+      Hint = 'Go to last page of document'
+      Top = 0
+      Caption = 'LastPage'
+      ImageIndex = 6
+      OnClick = LastPageClick
+    end
+    object AllOnOne: TToolButton
+      Left = 566
+      Hint = 'Show all rows of this document on 1 page'
+      Top = 0
+      Caption = 'AllOnOne'
+      ImageIndex = 7
+      OnClick = AllOnOneClick
+      Style = tbsCheck
+      Visible = False
+    end
+    object ToolButton9: TToolButton
+      Left = 24
+      Height = 22
+      Top = 0
+      Caption = 'ToolButton9'
+      ImageIndex = 9
+      Style = tbsSeparator
+      Wrap = True
+    end
+    object Label2: TLabel
+      Left = 1
+      Height = 22
+      Top = 22
+      Width = 41
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Preview'#13#10'zoom'
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Layout = tlCenter
+      ParentFont = False
+    end
+    object ZoomBox: TComboBox
+      Left = 42
+      Height = 21
+      Hint = 'Preview zoom'
+      Top = 22
+      Width = 81
+      ItemHeight = 13
+      Items.Strings = (
+        'Fit to page'
+        'Fit to height'
+        'Fit to width'
+        '25%'
+        '50%'
+        '75%'
+        '100%'
+        '125%'
+        '150%'
+        '200%'
+        '300%'
+        '400%'
+        'Custom'
+      )
+      OnChange = ZoomBoxChange
+      Style = csDropDownList
+      TabOrder = 0
+    end
+    object FitHeight: TToolButton
+      Left = 123
+      Hint = 'Fit preview to page height'
+      Top = 22
+      AllowAllUp = True
+      Caption = 'FitHeight'
+      Grouped = True
+      ImageIndex = 11
+      OnClick = FitHeightClick
+      ParentShowHint = False
+      ShowHint = True
+      Style = tbsCheck
+    end
+    object FitWidth: TToolButton
+      Left = 146
+      Hint = 'Fit preview to page width'
+      Top = 22
+      AllowAllUp = True
+      Caption = 'FitWidth'
+      Grouped = True
+      ImageIndex = 12
+      OnClick = FitWidthClick
+      Style = tbsCheck
+    end
+    object ToolButton14: TToolButton
+      Left = 169
+      Height = 22
+      Top = 22
+      Caption = 'ToolButton14'
+      ImageIndex = 16
+      Style = tbsSeparator
+    end
+    object Label3: TLabel
+      Left = 177
+      Height = 22
+      Top = 22
+      Width = 37
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Pages per row'
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Layout = tlCenter
+      ParentFont = False
+      WordWrap = True
+    end
+    object PagesPerRow: TSpinEdit
+      Left = 214
+      Height = 21
+      Top = 22
+      Width = 59
+      MaxValue = 100
+      MinValue = 1
+      OnChange = PagesPerRowChange
+      TabOrder = 1
+      Value = 1
+    end
+    object Label4: TLabel
+      Left = 273
+      Height = 22
+      Top = 22
+      Width = 29
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Rows'
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Layout = tlCenter
+      ParentFont = False
+      WordWrap = True
+    end
+    object RowsPerPreview: TSpinEdit
+      Left = 302
+      Height = 21
+      Top = 22
+      Width = 59
+      MaxValue = 100
+      MinValue = 1
+      OnChange = RowsPerPreviewChange
+      TabOrder = 2
+      Value = 1
+    end
+    object ToolButton11: TToolButton
+      Left = 361
+      Height = 22
+      Top = 22
+      Caption = 'ToolButton11'
+      ImageIndex = 16
+      Style = tbsSeparator
+    end
+    object Zooming: TToolButton
+      Left = 369
+      Hint = 'Selects the Zoom Tool to zoom in or out'
+      Top = 22
+      AllowAllUp = True
+      Caption = 'Zooming'
+      Grouped = True
+      ImageIndex = 13
+      OnClick = ZoomingClick
+      Style = tbsCheck
+    end
+    object Panning: TToolButton
+      Left = 392
+      Hint = 'Selects the Hand Tool to pan across the Page'
+      Top = 22
+      AllowAllUp = True
+      Caption = 'Panning'
+      Grouped = True
+      ImageIndex = 14
+      OnClick = PanningClick
+      ParentShowHint = False
+      ShowHint = True
+      Style = tbsCheck
+    end
+    object ToolButton10: TToolButton
+      Left = 415
+      Height = 22
+      Top = 22
+      Caption = 'ToolButton10'
+      Style = tbsSeparator
+    end
+    object Grid: TToolButton
+      Left = 423
+      Hint = 'Show/Hide Grid'
+      Top = 22
+      Caption = 'Grid'
+      ImageIndex = 15
+      OnClick = GridClick
+      Style = tbsCheck
+    end
+    object UnitsBox: TComboBox
+      Left = 446
+      Height = 21
+      Top = 22
+      Width = 81
+      ItemHeight = 13
+      Items.Strings = (
+        'Inches'
+        'Centimeters'
+      )
+      OnChange = UnitsBoxChange
+      Style = csDropDownList
+      TabOrder = 3
+    end
+  end
+  object PreviewBox: TBegaZoomBox
+    Left = 0
+    Height = 489
+    Top = 44
+    Width = 590
+    HorzScrollBar.Tracking = True
+    VertScrollBar.Tracking = True
+    Align = alClient
+    TabOrder = 2
+    OnResize = PreviewBoxResize
+    object PreviewPanel: TBegaMetafilePreviewPanel
+      Left = 0
+      Height = 448
+      Top = 0
+      Width = 348
+      BevelOuter = bvNone
+      BevelWidth = 0
+      Color = clBtnShadow
+      CommonColumnWidth = 0
+      CommonRowHeight = 0
+      ParentColor = False
+      TabOrder = 0
+      OnMouseDown = PreviewPanelMouseDown
+      OnMouseMove = PreviewPanelMouseMove
+      OnMouseUp = PreviewPanelMouseUp
+      OnPaintPage = PreviewPanelPaintPage
+      OnUpdatePreview = PreviewPanelUpdatePreview
+    end
+  end
+  object imgList: TImageList
+    Left = 196
+    Top = 112
+    Bitmap = {
+      4C7A130000001000000010000000FB0300000000000078DAED5B3D76E23010D6
+      45B8037D8A9C803BE4069429A170B1B7A0DA9AF77281A4A24FB71D6F4FC011B4
+      2B839CB13C23CD8F0D063479F38C85BE6F66648DEC8C8C73A389676816FFF5F5
+      D5EAD66DBBCF51191C2D8ED2C89FE1E0DAA738B278D85EF18F89CFCDBF742E4E
+      615FA8538AC5BE2F09078FD9E46227B64D8D01CBF6E170E81D25D71EC176E71C
+      CD714814F2E5EC374DD329E6438C9DF4378CD945539BD2B1C3C6115E3BE9F819
+      F3776EA29D0B3FF8FFD798199B4F8E1ABCCDFEB0EF63E07FDA69EDF71BE2B9AA
+      B5AFF7DF1AFF947867CC9F6717F29ECACE097FEEDB9CAF4DAF4D81F7DD1F77FD
+      837D397F94AFDE8837DA97C49FC10FDA284DAF3F6873441B2A0867AFBDA6D85D
+      AE073AAC57E3B9798FAF55DE98BF7ABCD5BE2A7E22AF58795FC84B76DE97D683
+      9A4A4FBF1E70D684F27CF738C7E07EC9CC3D131E708C66DF103F23C7D56B72E2
+      5F5D076ADE4BE6039D2BE9F33B63DE637851FE414E6DFE4E65DF103F37EF256B
+      0196F788AFA2BC673C775499EF3A807D9E1B3E57C728E1B9186FF499EBBFBFB2
+      FF3EB3EE4BFD1F63FC9EB906A7A95596F6DCBC180FF6DDC47B7FE13CC1173850
+      DBD47E20898F76CBE341DB2FEC2516F1051E163E13031BAFF17F4EE327C4DFA8
+      F63FBFBC0578CB9E3D3316CB359BCC7E7C5E867BE1DC7917B171F71BEEA53BC6
+      7B07EEB24F1DB1114FEC5D93F8742F5F8287B1073F24FEE7C60FAB5972AF1F51
+      4B90CE9FC1FB078AF967DD6F97D6C4FC72B9CCE6E0CBCB4B4F178B4517DF6EB7
+      F3FBEF3DCA11DADEDEDE7ABA5AADFCFBFB7BCB11B0AFBF5FBDFBE5280EBF5EAF
+      FD66B36935C8E9746A390236C8E7DFCF96237E87F911EC1E8FC76EBC43BFC08B
+      09C1D1F9BFDFEF551CE11CC6D1C99FCF013EC496CE89D016628071F88FCD004F
+      6107762216B493D88F4DDFD7880B7AF90EC1767187F1E83890D8292C9C9F2D07
+      22056C968389453984D81E87126BA9775B9F3FBCD0D654788EDFD5FFEAFF23FA
+      7F8FEF0EF911D45D719D74853A93ECBDC779F95FE3BF7EFCB391ED76DBF3F372
+      CE1E8BD03F556E0D21F40D127EDF008F258E680762E2BF549023134BFB1DB41B
+      F0F0BCE043671F969E60098A83D7DA1F217ED3F833AFFFB912A19D7F323FA47B
+      2BCFCC31A50D490D10B52BA801A27615786FC093B88AF79CFB3EBB7E46F8C3C1
+      E7EAB945FC18F57F67F8FD9993FFBEE5AACFFCF01EC3F93C161EDE6B849FABFF
+      D5FFBBF7FFB1253E4B5BB01A7CFA2CAFF5598B1F23FE8ABF7FFCB3CA18F9A7E1
+      A0FA7339A87EB79C477358436F811D63DE49E790157F03692EEF36488F166C03
+      DEE968F8EF4E4589B8C8D3FE7F947063FDD3BED03EE61FD69EB38FF9817152F1
+      973872F19738D23E947DD886F9C11DFF9C1FDCF1C73824F6290EC9FCCBCD5B6C
+      6C59758084477B6C53D080FD07460E0A8B
+    }
+  end
+  object PrintDialog: TPrintDialog
+    Left = 80
+    Top = 116
+  end
+  object PrinterSetupDialog: TPrinterSetupDialog
+    Left = 80
+    Top = 180
+  end
+end

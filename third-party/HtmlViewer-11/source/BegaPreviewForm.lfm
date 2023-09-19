@@ -1,0 +1,13 @@
+object BegaCustomPrintPreviewForm: TBegaCustomPrintPreviewForm
+  Left = 363
+  Height = 806
+  Top = 142
+  Width = 1020
+  Caption = 'Print preview'
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Shell Dlg 2'
+  Position = poOwnerFormCenter
+  LCLVersion = '2.2.0.4'
+end

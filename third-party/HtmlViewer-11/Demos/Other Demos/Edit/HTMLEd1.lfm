@@ -1,0 +1,210 @@
+object Form1: TForm1
+  Left = 213
+  Height = 475
+  Top = 177
+  Width = 708
+  Caption = 'Form1'
+  ClientHeight = 455
+  ClientWidth = 708
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Menu = MainMenu1
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnResize = FormResize
+  OnShow = FormShow
+  LCLVersion = '1.8.2.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 41
+    Top = 0
+    Width = 708
+    Align = alTop
+    ClientHeight = 41
+    ClientWidth = 708
+    TabOrder = 0
+    object Button1: TButton
+      Tag = 3
+      Left = 246
+      Height = 25
+      Top = 6
+      Width = 25
+      Caption = 'B'
+      OnClick = ButtonClick
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Tag = 1
+      Left = 270
+      Height = 25
+      Top = 6
+      Width = 25
+      Caption = 'I'
+      OnClick = ButtonClick
+      TabOrder = 1
+    end
+    object Button3: TButton
+      Tag = 2
+      Left = 294
+      Height = 25
+      Top = 6
+      Width = 25
+      Caption = 'U'
+      OnClick = ButtonClick
+      TabOrder = 2
+    end
+  end
+  object Panel: TPanel
+    Left = 0
+    Height = 395
+    Top = 41
+    Width = 708
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 395
+    ClientWidth = 708
+    TabOrder = 1
+    object Splitter: TSplitter
+      Cursor = crVSplit
+      Left = 0
+      Height = 5
+      Top = 209
+      Width = 708
+      Align = alTop
+      OnMoved = SplitterMoved
+      ResizeAnchor = akTop
+    end
+    object RichEdit: TMemo
+      Left = 0
+      Height = 209
+      Top = 0
+      Width = 708
+      Align = alTop
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      OnChange = RichEdChange
+      ParentFont = False
+      ScrollBars = ssBoth
+      TabOrder = 0
+      WordWrap = False
+    end
+    object Panel2: TPanel
+      Left = 0
+      Height = 181
+      Top = 214
+      Width = 708
+      Align = alClient
+      BevelOuter = bvLowered
+      BevelWidth = 2
+      Caption = 'Panel2'
+      ClientHeight = 181
+      ClientWidth = 708
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 1
+      object Viewer: THtmlViewer
+        Left = 2
+        Height = 177
+        Top = 2
+        Width = 704
+        BorderStyle = htFocused
+        DefBackground = clWindow
+        DefFontName = 'Times New Roman'
+        DefPreFontName = 'Courier New'
+        HistoryMaxCount = 0
+        HtOptions = [htShowDummyCaret]
+        NoSelect = False
+        PrintMarginBottom = 2
+        PrintMarginLeft = 2
+        PrintMarginRight = 2
+        PrintMarginTop = 2
+        PrintScale = 1
+        OnHotSpotClick = ViewerHotSpotClick
+        OnHotSpotCovered = ViewerHotSpotCovered
+        Align = alClient
+        TabOrder = 0
+        OnMouseUp = ViewerMouseUp
+      end
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 19
+    Top = 436
+    Width = 708
+    Align = alBottom
+    Alignment = taLeftJustify
+    BevelInner = bvLowered
+    BevelOuter = bvNone
+    TabOrder = 2
+  end
+  object MainMenu1: TMainMenu
+    left = 400
+    top = 8
+    object File1: TMenuItem
+      Caption = '&File'
+      object New1: TMenuItem
+        Caption = '&New'
+        OnClick = New1Click
+      end
+      object NewHTML: TMenuItem
+        Caption = 'New &HTML'
+        OnClick = New1Click
+      end
+      object Open1: TMenuItem
+        Caption = '&Open'
+        ShortCut = 114
+        OnClick = Open1Click
+      end
+      object Save1: TMenuItem
+        Caption = '&Save'
+        ShortCut = 113
+        OnClick = Save1Click
+      end
+      object Saveas1: TMenuItem
+        Caption = 'Save &as'
+        OnClick = Saveas1Click
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object ExitItem: TMenuItem
+        Caption = 'E&xit'
+        OnClick = ExitItemClick
+      end
+    end
+    object Edit1: TMenuItem
+      Caption = '&Edit'
+      object Copy1: TMenuItem
+        Caption = '&Copy'
+        ShortCut = 16429
+        OnClick = EditCopy
+      end
+      object Cut1: TMenuItem
+        Caption = 'Cu&t'
+        ShortCut = 8238
+        OnClick = EditCut
+      end
+      object Paste1: TMenuItem
+        Caption = '&Paste'
+        ShortCut = 8237
+        OnClick = EditPaste
+      end
+    end
+    object About1: TMenuItem
+      Caption = '&About'
+      OnClick = About1Click
+    end
+  end
+  object OpenDialog: TOpenDialog
+    DefaultExt = '.htm'
+    Filter = 'HTML Files|*.htm; *.html|All Files|*.*'
+    left = 440
+  end
+  object SaveDialog1: TSaveDialog
+    left = 472
+  end
+end

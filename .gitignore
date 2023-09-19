@@ -1,5 +1,4 @@
 # Test HTML project specific
-/bin
 
 # Compiled l10n files: .mo should be ignored
 *.mo

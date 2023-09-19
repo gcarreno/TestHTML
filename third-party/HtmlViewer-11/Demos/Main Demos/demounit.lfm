@@ -1,0 +1,277 @@
+object Form1: TForm1
+  Left = 598
+  Height = 658
+  Top = 226
+  Width = 985
+  AllowDropFiles = True
+  ClientHeight = 638
+  ClientWidth = 985
+  Color = clWindow
+  Menu = MainMenu
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnDropFiles = FormDropFiles
+  OnShow = FormShow
+  ParentFont = True
+  Position = poDefault
+  LCLVersion = '2.2.0.4'
+  object Panel1: TPanel
+    Left = 0
+    Height = 18
+    Top = 620
+    Width = 985
+    Align = alBottom
+    Alignment = taLeftJustify
+    BevelInner = bvLowered
+    BevelOuter = bvNone
+    ClientHeight = 18
+    ClientWidth = 985
+    TabOrder = 0
+    object ProgressBar: TProgressBar
+      Left = 835
+      Height = 16
+      Top = 1
+      Width = 149
+      Align = alRight
+      TabOrder = 0
+      Visible = False
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 33
+    Top = 0
+    Width = 985
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 33
+    ClientWidth = 985
+    TabOrder = 1
+    object Edit1: TEdit
+      Left = 246
+      Height = 22
+      Top = 4
+      Width = 738
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 3
+    end
+    object ReloadButton: TButton
+      Left = 66
+      Height = 24
+      Top = 4
+      Width = 59
+      Caption = '&Reload'
+      Enabled = False
+      OnClick = ReloadButtonClick
+      TabOrder = 0
+    end
+    object BackButton: TButton
+      Left = 125
+      Height = 24
+      Top = 4
+      Width = 59
+      Caption = '&Back'
+      Enabled = False
+      OnClick = FwdBackClick
+      TabOrder = 1
+    end
+    object FwdButton: TButton
+      Left = 184
+      Height = 24
+      Top = 4
+      Width = 59
+      Caption = '&Forward'
+      Enabled = False
+      OnClick = FwdBackClick
+      TabOrder = 2
+    end
+    object RepaintButton: TButton
+      Left = 7
+      Height = 24
+      Top = 4
+      Width = 59
+      Caption = 'Re&paint'
+      Enabled = False
+      OnClick = RepaintButtonClick
+      TabOrder = 4
+    end
+  end
+  object Viewer: THtmlViewer
+    Left = 0
+    Height = 587
+    Top = 33
+    Width = 985
+    BorderStyle = htSingle
+    DefBackground = clWindow
+    DefFontColor = clWindowText
+    DefOverLinkColor = clFuchsia
+    HistoryMaxCount = 6
+    ImageCacheCount = 6
+    NoSelect = False
+    PrintMarginBottom = 2
+    PrintMarginLeft = 2
+    PrintMarginRight = 2
+    PrintMarginTop = 2
+    PrintScale = 1
+    QuirksMode = qmDetect
+    Text = 'Hello Serif<pre>Hello Monospace</pre>'
+    OnFormSubmit = SubmitEvent
+    OnHistoryChange = HistoryChange
+    OnHotSpotClick = HotSpotClick
+    OnHotSpotCovered = HotSpotChange
+    OnInclude = ViewerInclude
+    OnMetaRefresh = MetaRefreshEvent
+    OnObjectClick = ObjectClick
+    OnPrintHTMLFooter = ViewerPrintHTMLFooter
+    OnPrintHTMLHeader = ViewerPrintHTMLHeader
+    OnProcessing = ProcessingHandler
+    OnProgress = ViewerProgress
+    OnRightClick = RightClick
+    OnScript = ViewerScript
+    OnSoundRequest = SoundRequest
+    Align = alClient
+    TabOrder = 2
+    TabStop = True
+    OnMouseMove = ViewerMouseMove
+  end
+  object OpenDialog: TOpenDialog
+    DefaultExt = '.htm'
+    Filter = 'html files|*.htm;*.html|all files|*.*'
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
+    Left = 321
+    Top = 2
+  end
+  object MainMenu: TMainMenu
+    Left = 171
+    Top = 60
+    object File1: TMenuItem
+      Caption = '&File'
+      object Open: TMenuItem
+        Caption = '&Open'
+        ShortCut = 114
+        OnClick = OpenFileClick
+      end
+      object OpenTextFile: TMenuItem
+        Caption = 'Open &Text File'
+        OnClick = OpenTextFileClick
+      end
+      object OpenImageFile: TMenuItem
+        Caption = 'Open &Image File'
+        OnClick = OpenImageFileClick
+      end
+      object PrinterSetup: TMenuItem
+        Caption = 'Printer Setup...'
+        OnClick = PrinterSetupClick
+      end
+      object Printpreview: TMenuItem
+        Caption = 'Print Pre&view...'
+        Enabled = False
+        OnClick = PrintpreviewClick
+      end
+      object Print1: TMenuItem
+        Caption = '&Print...'
+        Enabled = False
+        OnClick = Print1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Exit1: TMenuItem
+        Caption = 'E&xit'
+        OnClick = Exit1Click
+      end
+    end
+    object Edit2: TMenuItem
+      Caption = '&Edit'
+      OnClick = Edit2Click
+      object Find1: TMenuItem
+        Caption = '&Find'
+        Enabled = False
+        OnClick = Find1Click
+      end
+      object CopyItem: TMenuItem
+        Caption = '&Copy'
+        ShortCut = 16451
+        OnClick = CopyItemClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object SelectAllItem: TMenuItem
+        Caption = 'Select &All'
+        Enabled = False
+        OnClick = SelectAllItemClick
+      end
+    end
+    object options1: TMenuItem
+      Caption = '&Options'
+      object ShowImages: TMenuItem
+        Caption = '&Show images'
+        OnClick = ShowImagesClick
+      end
+      object Fonts: TMenuItem
+        Caption = 'Default &Font/Colors...'
+        OnClick = FontsClick
+      end
+    end
+    object HistoryMenuItem: TMenuItem
+      Caption = '&History'
+      Visible = False
+    end
+    object About1: TMenuItem
+      Caption = '&About'
+      OnClick = About1Click
+    end
+  end
+  object PrintDialog: TPrintDialog
+    FromPage = 1
+    MinPage = 1
+    MaxPage = 9999
+    Options = [poPageNums]
+    ToPage = 1
+    Left = 378
+    Top = 1
+  end
+  object FindDialog: TFindDialog
+    Options = [frDown, frHideWholeWord, frDisableWholeWord]
+    OnFind = FindDialogFind
+    Left = 265
+    Top = 65535
+  end
+  object PopupMenu: TPopupMenu
+    Left = 432
+    Top = 1
+    object Viewimage: TMenuItem
+      Caption = '&View image'
+      OnClick = ViewimageClick
+    end
+    object CopyImageToClipboard: TMenuItem
+      Caption = '&Copy image to clipboard'
+      OnClick = CopyImageToClipboardClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object OpenInNewWindow: TMenuItem
+      Caption = '&Open in new window'
+      OnClick = OpenInNewWindowClick
+    end
+  end
+  object MetaTimer: TTimer
+    Enabled = False
+    OnTimer = MetaTimerTimer
+    Left = 242
+    Top = 75
+  end
+  object Timer1: TTimer
+    Interval = 200
+    OnTimer = Timer1Timer
+    Left = 291
+    Top = 71
+  end
+  object PrinterSetupDialog: TPrinterSetupDialog
+    Left = 512
+  end
+end
