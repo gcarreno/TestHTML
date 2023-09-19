@@ -10,6 +10,7 @@ object frmMain: TfrmMain
   Constraints.MinWidth = 800
   Menu = mmMain
   Position = poScreenCenter
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   object pcMain: TPageControl
     Left = 0
@@ -34,8 +35,8 @@ object frmMain: TfrmMain
         Align = alTop
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 177
-        ClientWidth = 790
+        ClientHeight = 173
+        ClientWidth = 786
         TabOrder = 1
         object gbResource: TGroupBox
           Left = 0
@@ -143,7 +144,7 @@ object frmMain: TfrmMain
         Height = 292
         Top = 177
         Width = 790
-        BorderStyle = htFocused
+        BorderStyle = htNone
         HistoryMaxCount = 0
         NoSelect = False
         PrintMarginBottom = 2
