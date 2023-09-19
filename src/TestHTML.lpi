@@ -19,7 +19,7 @@
         <Resource_0 FileName="html/simplepage.html" Type="HTML" ResourceName="SIMPLEPAGE"/>
         <Resource_1 FileName="html/pagewithinlinecss.html" Type="HTML" ResourceName="PAGEWITHINLINECSS"/>
         <Resource_2 FileName="html/simplepagewithanchor.html" Type="HTML" ResourceName="SIMPLEPAGEWITHANCHOR"/>
-        <Resource_3 FileName="html/infopage.html" Type="HTML" ResourceName="INFOPAGE"/>
+        <Resource_3 FileName="html/infopagehtmlviewer.html" Type="HTML" ResourceName="INFOPAGEHTMLVIEWER"/>
       </Resources>
     </General>
     <BuildModes Count="3">

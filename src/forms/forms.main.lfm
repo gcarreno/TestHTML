@@ -16,11 +16,11 @@ object frmMain: TfrmMain
     Height = 500
     Top = 0
     Width = 800
-    ActivePage = tsTFrameBrowser
+    ActivePage = tsHTMLViewer
     Align = alClient
     MultiLine = True
     Options = [nboMultiLine]
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     object tsHTMLViewer: TTabSheet
       Caption = 'THTMLViewer'
@@ -166,8 +166,26 @@ object frmMain: TfrmMain
         Top = 0
         Width = 790
         Align = alTop
+        BevelOuter = bvNone
         Caption = 'Not Implemented Yet'
         TabOrder = 0
+      end
+      object fvFrameViewer: TFrameViewer
+        Left = 0
+        Height = 419
+        Top = 50
+        Width = 790
+        CodePage = 0
+        HistoryIndex = 0
+        HistoryMaxCount = 0
+        NoSelect = False
+        PrintMarginBottom = 2
+        PrintMarginLeft = 2
+        PrintMarginRight = 2
+        PrintMarginTop = 2
+        PrintScale = 1
+        Align = alClient
+        TabOrder = 1
       end
     end
     object tsTFrameBrowser: TTabSheet
@@ -180,8 +198,26 @@ object frmMain: TfrmMain
         Top = 0
         Width = 790
         Align = alTop
+        BevelOuter = bvNone
         Caption = 'Not Implemented Yet'
         TabOrder = 0
+      end
+      object fbFrameBrowser: TFrameBrowser
+        Left = 0
+        Height = 419
+        Top = 50
+        Width = 790
+        CodePage = 0
+        HistoryIndex = 0
+        HistoryMaxCount = 0
+        NoSelect = False
+        PrintMarginBottom = 2
+        PrintMarginLeft = 2
+        PrintMarginRight = 2
+        PrintMarginTop = 2
+        PrintScale = 1
+        Align = alClient
+        TabOrder = 1
       end
     end
   end

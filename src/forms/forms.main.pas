@@ -17,7 +17,7 @@ uses
 , ComCtrls
 , ExtCtrls
 , StdCtrls
-, HtmlView
+, HtmlView, FramView, FramBrwz
 ;
 
 type
@@ -37,6 +37,8 @@ type
     btnHTMLViewerPageWithInlineCSSRes: TButton;
     btnSimplePageFile: TButton;
     btnHTMLViewerOnHotSpotClick: TButton;
+    fbFrameBrowser: TFrameBrowser;
+    fvFrameViewer: TFrameViewer;
     gbResource: TGroupBox;
     gbFile: TGroupBox;
     gbEvents: TGroupBox;
@@ -59,8 +61,8 @@ type
     procedure actHTMLViewerSimplePageResExecute(Sender: TObject);
   private
     procedure InitShortCuts;
-    procedure HTMLLoadFromResource(AResource: UnicodeString);
-    procedure HTMLLoadFromFile(AResource: UnicodeString);
+    procedure HTMLViewerLoadFromResource(AResource: UnicodeString);
+    procedure HTMLViewerLoadFromFile(AResource: UnicodeString);
     procedure OnHotSpotClick(Sender: TObject; const URL: UnicodeString;
       var Handled: Boolean);
   public
@@ -82,7 +84,9 @@ const
   cHTMLPath: UnicodeString = '../src/html/%s';
   cSimplePage: UnicodeString = 'simplepage.html';
   cPageWithInlineCSS: UnicodeString = 'pagewithinlinecss.html';
-  crInfoPage = 'INFOPAGE';
+  crInfoPageHtmlViewer = 'INFOPAGEHTMLVIEWER';
+  crInfoPageFrameViewer = 'INFOPAGEFRAMEVIEWER';
+  crInfoPageBrowserViewer = 'INFOPAGEBROWSERVIEWER';
   crSimplePage = 'SIMPLEPAGE';
   crPageWithInlineCSS = 'PAGEWITHINLINECSS';
   crSimplePageWithAnchor = 'SIMPLEPAGEWITHANCHOR';
@@ -96,7 +100,7 @@ begin
   Caption:= 'Test HTML v0.1.0';
   InitShortCuts;
   hvHtmlViewer.OnHotSpotClick:= @OnHotSpotClick;
-  HTMLLoadFromResource(crInfoPage);
+  HTMLViewerLoadFromResource(crInfoPageHtmlViewer);
   pcMain.ActivePageIndex:= 0;
 end;
 
@@ -110,7 +114,7 @@ begin
 {$ENDIF}
 end;
 
-procedure TfrmMain.HTMLLoadFromResource(AResource: UnicodeString);
+procedure TfrmMain.HTMLViewerLoadFromResource(AResource: UnicodeString);
 var
   resourceStream: TResourceStream;
 begin
@@ -124,7 +128,7 @@ begin
   end;
 end;
 
-procedure TfrmMain.HTMLLoadFromFile(AResource: UnicodeString);
+procedure TfrmMain.HTMLViewerLoadFromFile(AResource: UnicodeString);
 begin
   hvHtmlViewer.LoadFromFile(UnicodeFormat(cHTMLPath, [AResource]));
 end;
@@ -138,27 +142,27 @@ end;
 
 procedure TfrmMain.actHTMLViewerSimplePageResExecute(Sender: TObject);
 begin
-  HTMLLoadFromResource(crSimplePage);
+  HTMLViewerLoadFromResource(crSimplePage);
 end;
 
 procedure TfrmMain.actHTMLViewerPageWithInlineCSSResExecute(Sender: TObject);
 begin
-  HTMLLoadFromResource(crPageWithInlineCSS);
+  HTMLViewerLoadFromResource(crPageWithInlineCSS);
 end;
 
 procedure TfrmMain.actHTMLViewerSimplePageFileExecute(Sender: TObject);
 begin
-  HTMLLoadFromFile(cSimplePage);
+  HTMLViewerLoadFromFile(cSimplePage);
 end;
 
 procedure TfrmMain.actHTMLViewerPageWithInlineCSSFileExecute(Sender: TObject);
 begin
-  HTMLLoadFromFile(cPageWithInlineCSS);
+  HTMLViewerLoadFromFile(cPageWithInlineCSS);
 end;
 
 procedure TfrmMain.actHTMLViewerOnHotSpotClickExecute(Sender: TObject);
 begin
-  HTMLLoadFromResource(crSimplePageWithAnchor);
+  HTMLViewerLoadFromResource(crSimplePageWithAnchor);
 end;
 
 end.
